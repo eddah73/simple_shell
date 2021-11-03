@@ -1,24 +1,29 @@
 #include "shell.h"
 
 /**
- * _strncpy - copies a string
+ * _strncpy - Ccpoies a string
+ * @dest: String to wich chars are going to be copied
+ * @src: String to be copied
+ * @n: Num of chars to copy from src
  *
- * @prmDest: char pointer
- * @prmSrc: char pointer
- * @prmLimit: number of character
- *
- * Return: string
+ * Return: Pointer to dest
  */
-char *_strncpy(char *prmDest, char *prmSrc, int prmLimit)
+char *_strncpy(char *dest, char *src, int n)
 {
-	int length, size_s;
+	int count = 0;
+	char *start = dest;
 
-	size_s = _strlen(prmSrc);
-
-	for (length = 0; length < prmLimit; length++)
+	while (*src != '\0' && count < n)
 	{
-		prmDest[length] = (length <= size_s) ? prmSrc[length] : '\0';
+		*(start++) = *(src++);
+		count++;
 	}
 
-	return (prmDest);
+	while (count < n)
+	{
+		*(start++) = '\0';
+		count++;
+	}
+
+	return (dest);
 }

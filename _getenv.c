@@ -1,20 +1,19 @@
 #include "shell.h"
 
 /**
- * _getenv - get environment variable
+ * _getenv - Returns a pointer to a env var value
+ * @name: Environment variable name
  *
- * @prmEnviron: first node
- * @prmName: environment variable name
- *
- * Return: environment variable node
- */
-environment_t *_getenv(environment_t *prmEnviron, char *prmName)
+ * Return: Pointer to environment variable value
+*/
+
+char *_getenv(char *name)
 {
-	if (prmEnviron == NULL)
-		return (NULL);
+	int i;
 
-	if (_strcmp(prmEnviron->name, prmName) == 0)
-		return (prmEnviron);
+	for (i = 0; __environ[i] != NULL; i++)
+		if (_strncmp(__environ[i], name, _strlen(name)) == 0)
+			return (&__environ[i][_strlen(name) + 1]);
 
-	return (_getenv(prmEnviron->next, prmName));
+	return (NULL);
 }

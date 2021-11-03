@@ -1,25 +1,26 @@
 #include "shell.h"
 
 /**
- * _strcpy - copies the string pointed to by src,
- *               including the terminating null byte (\0),
- *               to the buffer pointed to by dest
+ * _strcpy - Copies the string src to dest
+ * @dest: Destiny pointer
+ * @src: String source
  *
- * @prmDest: char pointer
- * @prmSrc: char pointer
- *
- * Return: char*
+ * Return: Pointer to dest
  */
-char *_strcpy(char *prmDest, char *prmSrc)
+char *_strcpy(char *dest, char *src)
 {
-	int cLoop, size = _strlen(prmSrc);
+	char *mem_address;
 
-	for (cLoop = 0; cLoop < size; cLoop++)
+	mem_address = dest;
+
+	while (*src != '\0')
 	{
-		prmDest[cLoop] = prmSrc[cLoop];
+		*mem_address = *src;
+		mem_address++;
+		src++;
 	}
 
-	prmDest[size] = '\0';
+	*mem_address = '\0';
 
-	return (prmDest);
+	return (dest);
 }

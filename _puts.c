@@ -1,21 +1,16 @@
 #include "shell.h"
 
 /**
- * _puts - write all char from string to stdout
+ * _puts - Prints a string to stdout
+ * @str: String to be printed
  *
- * @prmStr: string to print
- *
- * Return: number of printed char
- */
-
-int _puts(char *prmStr)
+ * Return: Number of chars printed
+*/
+int _puts(char *str)
 {
-	int i = 0, sum = 0;
+	int len = _strlen(str);
 
-	while (prmStr[i])
-	{
-		sum += _putchar(prmStr[i]);
-		i++;
-	}
-	return (sum);
+	write(STDOUT_FILENO, str, len);
+
+	return (len);
 }
